@@ -1,0 +1,43 @@
+body{
+    background-image: url("Images/banner-g797cafcf0_1920.jpg");
+}
+
+#mainDiv{
+    display:flex;
+}
+
+#formDiv{
+    display:none;
+    min-width:220px;
+    height: 270px;
+    margin-left: 2%;
+}
+
+form{
+    background-color: white;
+    padding: 7%;
+    border-radius: 3%;
+}
+
+#booksDiv{
+    display:flex;
+    margin-left: 2%;
+    flex-wrap:wrap;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+#addNew{
+    display:block;
+    margin:auto;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 70px;
+    width: 70px;      
+    font-size: 2rem;
+}
+
