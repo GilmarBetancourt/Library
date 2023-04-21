@@ -41,3 +41,11 @@ h1, h2{
     font-size: 2rem;
 }
 
+.bookCover{
+    width: 210px;
+    height: 310px;
+    font-size: 1.3em;
+    color:beige;
+    padding: 10%;
+}
+
