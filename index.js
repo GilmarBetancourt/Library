@@ -32,13 +32,15 @@ function createBook(){
     newBook.style.backgroundImage = "url('Images/bookcover.png')";
     booksDiv.appendChild(newBook);   
     writeBookCover(); 
+    //newBook.setAttribute("data-number")=myArray.length+1; ???
     eraseForm();
 
 }
 
 function writeBookCover(){
-    let newCover = new Book(newTitle.value, newAuthor.value, newPages.value, newStatus.value);
+    let newCover = new Book(newTitle.value, newAuthor.value, newPages.value, newStatus.checked);
     let newInfo = document.createElement("div");
+    //newInfo.setAttribute("data-number")=myArray.length+1; ???
     newInfo.classList.add("bookCover");
     let text = "";
     for (let x in newCover){
@@ -52,9 +54,8 @@ function eraseForm(){
     const formFields = document.querySelectorAll(".formInput");
     for(let i = 0; i<formFields.length; i++){
         formFields[i].value = "";
-        //FIX: This is not working
-        if(formFields[i].nodeType == "checkbox"){
-            formFields[i].ariaChecked  == false;
+        if(formFields[i].type == "checkbox"){
+            formFields[i].checked = false;
         }
     }
 }

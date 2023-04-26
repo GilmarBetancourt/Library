@@ -49,3 +49,52 @@ h1, h2{
     padding: 10%;
 }
 
+#status{
+    position:relative;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+}
+
+.slider{
+    position:absolute;
+    display:inline-block;
+    cursor:pointer;
+    background-color: #eddb87;
+    transition: .4s;
+    border-radius: 34px;
+    width: 60px;
+    height: 34px;
+    
+}
+
+.slider:before {
+    position:absolute;
+    display:inline-block;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgb(96, 75, 49);
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  #status:checked + .slider {
+    background-color: #c3a82d;
+  }
+  
+  #status:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  #status:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+#formSubmit{
+    margin-top: 2rem;
+    margin-left: 35%;
+}
