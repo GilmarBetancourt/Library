@@ -1,6 +1,7 @@
 //Simple library to keep record of your books. 
 let myLibrary = [];
 let newBook="";
+let newDeleteB= "";
 
 let formDiv = document.getElementById("formDiv");
 let newTitle = document.getElementById("title");
@@ -31,8 +32,12 @@ function createBook(){
     newBook.style.height = "370px";
     newBook.style.backgroundImage = "url('Images/bookcover.png')";
     booksDiv.appendChild(newBook);   
-    writeBookCover(); 
-    //newBook.setAttribute("data-number")=myArray.length+1; ???
+    writeBookCover();
+    //This saves the entire DOM object, not only the object. FIX
+    myLibrary.push(newBook);
+    newBook.setAttribute("data-number", myLibrary.length);
+    console.log(newBook.dataset.number);
+    console.log(myLibrary[0]);
     eraseForm();
 
 }
@@ -40,14 +45,18 @@ function createBook(){
 function writeBookCover(){
     let newCover = new Book(newTitle.value, newAuthor.value, newPages.value, newStatus.checked);
     let newInfo = document.createElement("div");
-    //newInfo.setAttribute("data-number")=myArray.length+1; ???
+    newDeleteB = document.createElement("button");
+    newDeleteB.textContent = "Delete";
     newInfo.classList.add("bookCover");
+
     let text = "";
     for (let x in newCover){
         text += newCover[x] + "<br>";
     }
     newInfo.innerHTML = text;
     newBook.appendChild(newInfo);
+    newInfo.appendChild(newDeleteB);
+
 }
 
 function eraseForm(){
@@ -60,8 +69,23 @@ function eraseForm(){
     }
 }
 
+function eraseBook(bookNumber){
+    //To erase the book from the array. FIX: This doesn't work. 
+    for(let i=0; i<myLibrary.length;i++){
+        if(myLibrary[i]===bookNumber){
+            myLibrary.splice(i, 1);
+        }
+    }
+    //To erase the book from the DOM
+    booksDiv.removeChild(newBook);
+
+
+}
+
 
 addButton.addEventListener("click", addBookToLibrary);
 formSubmit.addEventListener("click", createBook);
+newDeleteB.addEventListener("click", eraseBook(newBook.dataset.number));
+
 
 //const book1 = new Book("The Paris Vendetta", "Steve Berry", "450", "read");
